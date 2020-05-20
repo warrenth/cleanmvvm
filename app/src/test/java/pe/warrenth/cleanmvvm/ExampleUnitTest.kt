@@ -1,4 +1,4 @@
-package pe.warrenth.sample
+package pe.warrenth.cleanmvvm
 
 import org.junit.Test
 
