@@ -21,6 +21,7 @@ class SplashActivity : BaseActivity<ActivityMainBinding, SplashViewModel>() {
 
     override fun setUp(savedInstanceState: Bundle?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
 
