@@ -38,14 +38,24 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.0.0-alpha1'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
 
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.0'
     implementation 'com.squareup.retrofit2:converter-moshi:2.6.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.0.0'
 
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation 'org.koin:koin-android:2.0.1'
     implementation 'org.koin:koin-androidx-viewmodel:2.0.1'
 
     implementation 'com.android.databinding:compiler:3.5.0'
+
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+    implementation "android.arch.persistence.room:rxjava2:1.1.1"
+
+
+    // Logging
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 }

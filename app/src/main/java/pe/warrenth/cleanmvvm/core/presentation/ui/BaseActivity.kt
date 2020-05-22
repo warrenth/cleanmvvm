@@ -1,4 +1,4 @@
-package pe.warrenth.cleanmvvm.presentation
+package pe.warrenth.cleanmvvm.core.presentation.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

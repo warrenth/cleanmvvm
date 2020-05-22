@@ -1,18 +1,20 @@
 package pe.warrenth.cleanmvvm.presentation.splash
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pe.warrenth.cleanmvvm.R
-import pe.warrenth.cleanmvvm.databinding.ActivityMainBinding
-import pe.warrenth.cleanmvvm.presentation.BaseActivity
+import pe.warrenth.cleanmvvm.databinding.ActivitySplashBinding
+import pe.warrenth.cleanmvvm.core.presentation.ui.BaseActivity
+import pe.warrenth.cleanmvvm.presentation.main.MainActivity
 
-class SplashActivity : BaseActivity<ActivityMainBinding, SplashViewModel>() {
+class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>() {
 
     private val splashViewModel: SplashViewModel by viewModel()
 
     override fun getLayoutId(): Int {
-        return R.layout.activity_main
+        return R.layout.activity_splash
     }
 
     override fun getViewModel(): SplashViewModel {
@@ -20,8 +22,17 @@ class SplashActivity : BaseActivity<ActivityMainBinding, SplashViewModel>() {
     }
 
     override fun setUp(savedInstanceState: Bundle?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if(savedInstanceState == null) {
+            splashViewModel.startMainActivity()
+        }
 
+        splashViewModel.navigationObservable.observe(this, Observer {
+            if(it) {
+                val intent = Intent(this@SplashActivity, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
+        })
     }
 
 
