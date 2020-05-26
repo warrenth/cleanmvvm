@@ -6,7 +6,7 @@ import io.reactivex.Observable
 import pe.warrenth.cleanmvvm.core.presentation.ui.BaseViewModel
 import java.util.concurrent.TimeUnit
 
-class SplashViewModel(application: Application) : BaseViewModel(application) {
+class SplashViewModel : BaseViewModel() {
 
     val navigationObservable = MutableLiveData<Boolean>()
 

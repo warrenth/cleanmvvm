@@ -1,22 +1,28 @@
 package pe.warrenth.cleanmvvm
 
-import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
+import androidx.multidex.MultiDexApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class CleanApplication : Application() {
+class CleanApplication : MultiDexApplication() {
 
-    init {
-        cleanApplication = this;
+    companion object {
+        lateinit var context : CleanApplication
     }
 
     override fun onCreate() {
         super.onCreate()
-        //
-        startKoin { androidContext(this@CleanApplication) }
+        context = this
+        configureDi()
+    }
+
+    private fun configureDi() = startKoin {
+        // use the Android context given there
+        androidContext(this@CleanApplication)
+        modules(appModules)
     }
 
     fun hasNetwork(): Boolean {
@@ -33,13 +39,6 @@ class CleanApplication : Application() {
         return isConnected
     }
 
-    companion object {
-        lateinit var cleanApplication : CleanApplication
 
-        val applicationContext: Context
-            get() {
-                return cleanApplication.applicationContext
-            }
-    }
 
 }

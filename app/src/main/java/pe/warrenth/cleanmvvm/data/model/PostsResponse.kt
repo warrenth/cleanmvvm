@@ -1,13 +1,15 @@
-package pe.warrenth.cleanmvvm.data.datasource.entity
+package pe.warrenth.cleanmvvm.data.model
 
 import pe.warrenth.cleanmvvm.core.Status
+import pe.warrenth.cleanmvvm.domain.entity.PostEntity
+
 
 class PostsResponse  {
     var status: Status
-    var posts: List<Post>? = null
+    var posts: List<PostEntity>? = null
     var error: Throwable? = null
 
-    private constructor(status: Status, posts: List<Post>?, error: Throwable?) {
+    private constructor(status: Status, posts: List<PostEntity>?, error: Throwable?) {
         this.status = status
         this.posts = posts
         this.error = error
@@ -19,7 +21,7 @@ class PostsResponse  {
             return PostsResponse(Status.LOADING, null, null)
         }
 
-        fun success(posts: List<Post>): PostsResponse {
+        fun success(posts: List<PostEntity>): PostsResponse {
             return PostsResponse(Status.SUCCESS, posts, null)
         }
 

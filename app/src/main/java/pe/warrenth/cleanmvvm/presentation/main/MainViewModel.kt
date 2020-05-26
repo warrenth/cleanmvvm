@@ -1,25 +1,23 @@
 package pe.warrenth.cleanmvvm.presentation.main
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import pe.warrenth.cleanmvvm.core.presentation.ui.BaseViewModel
-import pe.warrenth.cleanmvvm.data.datasource.entity.PostsResponse
-import pe.warrenth.cleanmvvm.domain.usecase.GetPostsUseCase
+import pe.warrenth.cleanmvvm.data.model.PostsResponse
+import pe.warrenth.cleanmvvm.domain.usecase.GetPostUseCase
 import timber.log.Timber
 
-class MainViewModel(application: Application,
-                    private val getPostsUseCase: GetPostsUseCase) : BaseViewModel(application) {
+class MainViewModel(private val getPostUseCase: GetPostUseCase) : BaseViewModel() {
 
     private val responseLiveData = MutableLiveData<PostsResponse>()
 
-    fun getPosts(): MutableLiveData<PostsResponse> {
+    fun getTest(): MutableLiveData<PostsResponse> {
         return responseLiveData
     }
 
     fun loadPosts() {
-       return addCompositeDisposable(getPostsUseCase.get()
+       return addCompositeDisposable(getPostUseCase.getData()
            .subscribeOn(Schedulers.io())
            .observeOn(AndroidSchedulers.mainThread())
            .doOnSubscribe { responseLiveData.value = PostsResponse.loading() }

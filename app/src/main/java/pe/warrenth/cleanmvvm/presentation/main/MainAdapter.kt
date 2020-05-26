@@ -3,16 +3,18 @@ package pe.warrenth.cleanmvvm.presentation.main
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.shiftweather.core.presentation.inflate
-import com.shiftweather.core.presentation.inflate2
+import com.shiftweather.core.presentation.loadImage
+import kotlinx.android.synthetic.main.item_post.view.*
 import pe.warrenth.cleanmvvm.R
-import pe.warrenth.cleanmvvm.data.datasource.entity.Post
+import pe.warrenth.cleanmvvm.data.model.PostModel
 import pe.warrenth.cleanmvvm.databinding.ItemPostBinding
+import pe.warrenth.cleanmvvm.domain.entity.PostEntity
 import timber.log.Timber
 
 class MainAdapter : RecyclerView.Adapter<MainAdapter.PostHolder>() {
-    private val posts = mutableListOf<Post>()
+    private val posts = mutableListOf<PostEntity>()
 
-    fun addPosts(posts: List<Post>) {
+    fun addPosts(posts: List<PostEntity>) {
         this.posts.addAll(posts)
         notifyDataSetChanged()
 
@@ -20,7 +22,7 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.PostHolder>() {
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): PostHolder {
-        return PostHolder(viewGroup.inflate2(R.layout.item_post))
+        return PostHolder(viewGroup.inflate(R.layout.item_post))
     }
 
     override fun getItemCount(): Int = posts.size
@@ -31,8 +33,11 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.PostHolder>() {
 
     class PostHolder(private val binding: ItemPostBinding): RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(post: Post) {
-            binding.post = post
+        fun bind(post: PostEntity) {
+            with(binding) {
+                image.loadImage(post.thumbnailUrl)
+                title.text = post.title
+            }
         }
 
     }

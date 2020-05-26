@@ -1,6 +1,9 @@
 package com.shiftweather.core.presentation
 
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 
 
 /**
@@ -15,3 +18,6 @@ fun <T> MutableLiveData<Resource<T>>.loading() =
 
 fun <T> MutableLiveData<Resource<T>>.error(message: String? = null) =
     postValue(Resource(ResourceState.ERROR, value?.data, message))
+
+fun <T, L : LiveData<T>> FragmentActivity.observe(liveData: L, body: (T?) -> Unit) =
+    liveData.observe(this, Observer(body))
