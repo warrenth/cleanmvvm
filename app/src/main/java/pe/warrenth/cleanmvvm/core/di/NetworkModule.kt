@@ -44,5 +44,5 @@ val networkModules = module {
     }
 }
 
-const val BASE_URL = "http://jsonplaceholder.typicode.com/"
+const val BASE_URL = "https://jsonplaceholder.typicode.com/"
 const val OK_HTTP_CACHE_SIZE = 10L * 1024 * 1024
