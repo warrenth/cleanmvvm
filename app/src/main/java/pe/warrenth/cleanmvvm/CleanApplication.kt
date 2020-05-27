@@ -25,6 +25,8 @@ class CleanApplication : MultiDexApplication() {
         modules(appModules)
     }
 
+    // test janghak
+
     fun hasNetwork(): Boolean {
         return isNetworkAvailable()
     }
