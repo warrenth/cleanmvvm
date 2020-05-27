@@ -29,6 +29,7 @@ class MainViewModel(private val getPostUseCase: GetPostUseCase) : BaseViewModel(
                responseLiveData.value = PostsResponse.error(it)
            })
        )
+        //upstream test
     }
 
 }
