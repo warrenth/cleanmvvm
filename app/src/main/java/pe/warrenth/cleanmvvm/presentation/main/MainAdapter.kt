@@ -2,11 +2,9 @@ package pe.warrenth.cleanmvvm.presentation.main
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.shiftweather.core.presentation.inflate
-import com.shiftweather.core.presentation.loadImage
-import kotlinx.android.synthetic.main.item_post.view.*
+import pe.warrenth.cleanmvvm.core.extention.inflate
+import pe.warrenth.cleanmvvm.core.extention.loadImage
 import pe.warrenth.cleanmvvm.R
-import pe.warrenth.cleanmvvm.data.model.PostModel
 import pe.warrenth.cleanmvvm.databinding.ItemPostBinding
 import pe.warrenth.cleanmvvm.domain.entity.PostEntity
 import timber.log.Timber

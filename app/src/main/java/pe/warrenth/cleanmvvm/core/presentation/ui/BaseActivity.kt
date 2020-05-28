@@ -11,12 +11,12 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : AppCompatA
 
     abstract fun getLayoutId(): Int
     abstract fun getViewModel(): V
-    abstract fun setUp(savedInstanceState: Bundle?)
+    abstract fun setUI(savedInstanceState: Bundle?)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         performDataBinding();
-        setUp(savedInstanceState)
+        setUI(savedInstanceState)
     }
 
     private fun performDataBinding() {

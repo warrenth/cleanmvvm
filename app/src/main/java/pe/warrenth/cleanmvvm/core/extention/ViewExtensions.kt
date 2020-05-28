@@ -1,4 +1,4 @@
-package com.shiftweather.core.presentation
+package pe.warrenth.cleanmvvm.core.extention
 
 import android.text.Editable
 import android.text.TextWatcher
@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
-import pe.warrenth.cleanmvvm.R
 
 fun View.visible() {
     visibility = View.VISIBLE

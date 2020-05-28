@@ -21,7 +21,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>() {
         return splashViewModel
     }
 
-    override fun setUp(savedInstanceState: Bundle?) {
+    override fun setUI(savedInstanceState: Bundle?) {
         if(savedInstanceState == null) {
             splashViewModel.startMainActivity()
         }
