@@ -11,7 +11,8 @@ class SplashViewModel : BaseViewModel() {
     val navigationObservable = MutableLiveData<Boolean>()
 
     fun startMainActivity() {
-        addCompositeDisposable(Observable.timer(3, TimeUnit.SECONDS)
+        //지정한 시간만큼 지연 후 값 출력
+        addCompositeDisposable(Observable.timer(1, TimeUnit.SECONDS)
             .subscribe{
                 navigationObservable.postValue(true)
             })
