@@ -6,6 +6,7 @@ import io.reactivex.schedulers.Schedulers
 import pe.warrenth.cleanmvvm.core.extention.error
 import pe.warrenth.cleanmvvm.core.extention.loading
 import pe.warrenth.cleanmvvm.core.extention.success
+import pe.warrenth.cleanmvvm.core.presentation.ui.BaseItem
 import pe.warrenth.cleanmvvm.core.presentation.ui.BaseViewModel
 import pe.warrenth.cleanmvvm.data.model.ResultData
 import pe.warrenth.cleanmvvm.data.model.Status
@@ -15,33 +16,52 @@ import timber.log.Timber
 
 class MainViewModel(private val getPostUseCase: GetPostUseCase) : BaseViewModel() {
 
-    private val responseLiveData = MutableLiveData<ResultData<List<PostEntity>>>()
+    val responseLiveData = MutableLiveData<ResultData<List<BaseItem>>>()
 
-    fun getTest(): MutableLiveData<ResultData<List<PostEntity>>> {
+    init {
+        loadPosts()
+    }
+
+    fun getTest(): MutableLiveData<ResultData<List<BaseItem>>> {
         return responseLiveData
     }
 
+
     fun loadPosts() {
-       return addCompositeDisposable(getPostUseCase.getData()
+
+       addCompositeDisposable(getPostUseCase.getData()
            .subscribeOn(Schedulers.io())
            .observeOn(AndroidSchedulers.mainThread())
            .doOnSubscribe {
+               //TODO 구조 변경 필요
                responseLiveData.value = ResultData(
                    status = Status.LOADING
                )
            }
            .subscribe({
                Timber.e("Fetched data: ${it.size}")
+
+               val baseItemList : ArrayList<BaseItem> = ArrayList()
+               var baseItem : BaseItem
+
+               for (i in it.indices) {
+                   if(i % 2 == 0) {
+                       baseItem = BaseItem(MainAdapter.TEXT_TYPE, it[i])
+                   } else  {
+                       baseItem = BaseItem(MainAdapter.IMAGE_TYPE, it[i])
+                   }
+                   baseItemList.add(baseItem)
+               }
                responseLiveData.value = ResultData(
                    status = Status.SUCCESS,
-                   data = it
+                   data = baseItemList
                )
            }, {
                Timber.e("Error fetching data: ${it.localizedMessage}")
-               responseLiveData.value = ResultData(
-                   status = Status.ERROR,
-                   message = it.localizedMessage
-               )
+               //responseLiveData.value = ResultData(
+               //    status = Status.ERROR,
+               //    message = it.localizedMessage
+               //)
            })
        )
     }

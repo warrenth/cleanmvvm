@@ -8,6 +8,7 @@ import pe.warrenth.cleanmvvm.R
 import pe.warrenth.cleanmvvm.core.extention.gone
 import pe.warrenth.cleanmvvm.core.extention.visible
 import pe.warrenth.cleanmvvm.core.presentation.ui.BaseFragment
+import pe.warrenth.cleanmvvm.core.presentation.ui.BaseItem
 import pe.warrenth.cleanmvvm.data.model.ResultData
 import pe.warrenth.cleanmvvm.data.model.Status
 import pe.warrenth.cleanmvvm.databinding.FragmentMainBinding
@@ -18,7 +19,7 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>() {
 
     private val mainViewModel : MainViewModel by viewModel()
 
-    private lateinit var mainAdapter: MainAdapter
+    private lateinit var mainAdapter: MainAdapter<BaseItem>
 
     override fun getLayoutId(): Int = R.layout.fragment_main
     override fun getViewModel(): MainViewModel = mainViewModel
@@ -29,17 +30,18 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>() {
         getBinding().recyclerview.layoutManager = LinearLayoutManager(activity)
         getBinding().recyclerview.adapter = mainAdapter
         getBinding().recyclerview.setHasFixedSize(true)
+        getBinding().viewModel = mainViewModel;
     }
 
     override fun setViewModel() {
-        mainViewModel.getTest().observe(this, Observer<ResultData<List<PostEntity>>> {
+        mainViewModel.getTest().observe(this, Observer<ResultData<List<BaseItem>>> {
             handleResponse(it)
         })
-        mainViewModel.loadPosts()
+
     }
 
 
-    private fun handleResponse(resultData: ResultData<List<PostEntity>>) {
+    private fun handleResponse(resultData: ResultData<List<BaseItem>>) {
         when(resultData.status) {
             Status.LOADING -> {
                 Timber.e("Loading data...")
@@ -49,7 +51,8 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>() {
             Status.SUCCESS -> {
                 Timber.e("Fetched data")
                 getBinding().loading.gone()
-                mainAdapter.addPosts(resultData.data!!)
+                //TODO 수정필요
+                resultData.data?.let { mainAdapter.setItems(it) }
             }
 
             Status.ERROR -> {

@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="pe.warrenth.cleanmvvm.presentation.main.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,8 +23,11 @@
             android:layout_centerInParent="true"
             android:visibility="gone" />
 
+
+        <!--app:items="@{viewModel.responseLiveData}"  todo binding 변경 작업-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:overScrollMode="never"

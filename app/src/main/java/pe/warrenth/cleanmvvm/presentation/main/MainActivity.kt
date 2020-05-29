@@ -1,6 +1,7 @@
 package pe.warrenth.cleanmvvm.presentation.main
 
 import android.os.Bundle
+import androidx.fragment.app.FragmentTransaction
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pe.warrenth.cleanmvvm.R
 import pe.warrenth.cleanmvvm.core.presentation.ui.BaseActivity
@@ -15,8 +16,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override fun setUI(savedInstanceState: Bundle?) {
 
-        supportFragmentManager.beginTransaction().add(R.id.layout_root, MainFragment())
-            .commit();
+        supportFragmentManager.beginTransaction().setCustomAnimations(
+            R.anim.fragment_enter,
+            R.anim.fragment_exit,
+            R.anim.fragment_pop_enter,
+            R.anim.fragment_pop_exit)
+            .add(R.id.layout_root, MainFragment()).commit();
     }
 
 }

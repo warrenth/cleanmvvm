@@ -18,4 +18,6 @@ public class JavaTestCode extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().add(R.id.layout_root, new MainFragment()).commit();
     }
+
+
 }
