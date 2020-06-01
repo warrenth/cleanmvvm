@@ -14,7 +14,7 @@ import pe.warrenth.cleanmvvm.databinding.ItemTextBinding
 import pe.warrenth.cleanmvvm.domain.entity.PostEntity
 import java.lang.IllegalArgumentException
 
-class MainAdapter<T> : BaseRecyclerAdapter<T>() {
+class MainAdapter : BaseRecyclerAdapter<BaseItem>() {
 
     companion object {
         const val TEXT_TYPE = 0  //const set, getter 없음.
@@ -34,17 +34,34 @@ class MainAdapter<T> : BaseRecyclerAdapter<T>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        super.onBindViewHolder(holder, position)
-        //TODO 수정필요.
-        (holder as Binder<T>).bind(mItems[position])
+        //TODO binding 수정 필요.
+        when(getItemViewType(position)) {
+            TEXT_TYPE -> {
+                (holder as Binder<PostEntity>).bind(mItems[position].objects as PostEntity)
+            }
+            IMAGE_TYPE -> {
+                (holder as Binder<PostEntity>).bind(mItems[position].objects as PostEntity)
+            }
+            else -> throw IllegalArgumentException("Invalid view type")
+        }.exhaustive
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return mItems[position].viewType
+    }
 
+    override fun getItemCount(): Int {
+        return super.getItemCount()
+    }
 
-//    fun setItems(data: List<BaseItem>) {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//    }
+    override fun setItems(items: List<BaseItem>) {
+        super.setItems(items)
+        notifyDataSetChanged()
+    }
 
+    override fun setItems(items: BaseItem?) {
+        super.setItems(items)
+    }
 
     class TextViewHolder : BaseViewHolder<ItemTextBinding>, Binder<PostEntity> {
 
@@ -52,7 +69,7 @@ class MainAdapter<T> : BaseRecyclerAdapter<T>() {
 
         override fun bind(data: PostEntity) {
             with(getBinding()) {
-                title.text = post?.title
+                title.text = data?.title
             }
         }
     }
@@ -63,10 +80,11 @@ class MainAdapter<T> : BaseRecyclerAdapter<T>() {
 
         override fun bind(data: PostEntity) {
             with(getBinding()) {
-                image.loadImage(post?.thumbnailUrl)
-                title.text = post?.title
+                image.loadImage(data?.thumbnailUrl)
+                title.text = data?.title
             }
         }
     }
+
 
 }

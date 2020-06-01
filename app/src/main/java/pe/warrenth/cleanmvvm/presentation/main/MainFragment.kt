@@ -19,8 +19,7 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>() {
 
     private val mainViewModel : MainViewModel by viewModel()
 
-    private lateinit var mainAdapter: MainAdapter<BaseItem>
-
+    private lateinit var mainAdapter: MainAdapter
     override fun getLayoutId(): Int = R.layout.fragment_main
     override fun getViewModel(): MainViewModel = mainViewModel
 

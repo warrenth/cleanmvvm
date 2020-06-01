@@ -2,7 +2,6 @@ package pe.warrenth.cleanmvvm.core.presentation.ui
 
 
 import androidx.recyclerview.widget.RecyclerView
-import pe.warrenth.cleanmvvm.core.extention.exhaustive
 
 abstract class BaseRecyclerAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -13,7 +12,7 @@ abstract class BaseRecyclerAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        //(holder as Binder<T>).bind(mItems[position])
+        (holder as Binder<T>).bind(getItem(position))
     }
 
     override fun getItemCount(): Int {
@@ -24,12 +23,12 @@ abstract class BaseRecyclerAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHo
         return mItems[position]
     }
 
-    fun setItems(items: List<T>) {
+    open fun setItems(items: List<T>) {
         this.mItems = items
         notifyDataSetChanged()
     }
 
-    fun setItems(items: T?) {
+    open fun setItems(items: T?) {
         this.mItems = items as List<T>
         notifyDataSetChanged()
     }
