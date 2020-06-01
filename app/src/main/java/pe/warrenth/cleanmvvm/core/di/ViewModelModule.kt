@@ -6,6 +6,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import pe.warrenth.cleanmvvm.CleanApplication
+import pe.warrenth.cleanmvvm.presentation.leftmenu.LeftMenuViewModel
 import pe.warrenth.cleanmvvm.presentation.main.MainViewModel
 import pe.warrenth.cleanmvvm.presentation.splash.SplashViewModel
 
@@ -18,6 +19,7 @@ val viewModelModules = module {
      * by ViewModel() get instance of ViewModel
      *
      */
+    viewModel { LeftMenuViewModel(get())}
     viewModel { MainViewModel(get())}
     viewModel { SplashViewModel() }
 }

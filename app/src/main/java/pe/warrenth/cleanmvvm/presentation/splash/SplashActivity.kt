@@ -7,7 +7,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import pe.warrenth.cleanmvvm.R
 import pe.warrenth.cleanmvvm.databinding.ActivitySplashBinding
 import pe.warrenth.cleanmvvm.core.presentation.ui.BaseActivity
-import pe.warrenth.cleanmvvm.presentation.main.MainActivity
+import pe.warrenth.cleanmvvm.presentation.MainActivity
 
 class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>() {
 

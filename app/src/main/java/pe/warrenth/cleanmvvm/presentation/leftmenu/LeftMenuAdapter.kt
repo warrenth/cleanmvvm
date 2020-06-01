@@ -1,20 +1,21 @@
-package pe.warrenth.cleanmvvm.presentation.main
+package pe.warrenth.cleanmvvm.presentation.leftmenu
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import pe.warrenth.cleanmvvm.R
 import pe.warrenth.cleanmvvm.core.extention.exhaustive
 import pe.warrenth.cleanmvvm.core.extention.loadImage
 import pe.warrenth.cleanmvvm.core.presentation.ui.BaseItem
 import pe.warrenth.cleanmvvm.core.presentation.ui.BaseRecyclerAdapter
-import pe.warrenth.cleanmvvm.core.presentation.ui.BaseViewHolder
+import pe.warrenth.cleanmvvm.core.presentation.ui2.BaseBindingViewHolder
 import pe.warrenth.cleanmvvm.databinding.ItemImageBinding
 import pe.warrenth.cleanmvvm.databinding.ItemTextBinding
 import pe.warrenth.cleanmvvm.domain.entity.PostEntity
 import java.lang.IllegalArgumentException
 
-class MainAdapter : BaseRecyclerAdapter<BaseItem>() {
+class LeftMenuAdapter : BaseRecyclerAdapter<BaseItem>() {
 
     companion object {
         const val TEXT_TYPE = 0  //const set, getter 없음.
@@ -34,14 +35,13 @@ class MainAdapter : BaseRecyclerAdapter<BaseItem>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val viewHolder:Binder<Any> = (holder as Binder<Any>)
-
+        //TODO binding 수정 필요.
         when(getItemViewType(position)) {
             TEXT_TYPE -> {
-                viewHolder.run { bind(mItems[position].objects as PostEntity) }
+                //(holder as BaseBindingViewHolder<PostEntity>).bind(mItems[position].objects as PostEntity)
             }
             IMAGE_TYPE -> {
-                viewHolder.run { bind(mItems[position].objects as PostEntity) }
+                //(holder as Binder<PostEntity>).bind(mItems[position].objects as PostEntity)
             }
             else -> throw IllegalArgumentException("Invalid view type")
         }.exhaustive
@@ -64,28 +64,29 @@ class MainAdapter : BaseRecyclerAdapter<BaseItem>() {
         super.setItems(items)
     }
 
-    class TextViewHolder : BaseViewHolder<ItemTextBinding>, Binder<PostEntity> {
+    class TextViewHolder : BaseBindingViewHolder<ItemTextBinding, PostEntity> {
 
         constructor(parent : ViewGroup) : super(LayoutInflater.from(parent.context).inflate(R.layout.item_text, parent, false))
 
-        override fun bind(data: PostEntity) {
-            with(getBinding()) {
-                title.text = data?.title
+        override fun binding(item: PostEntity) {
+            with(binding) {
+                title.text = item?.title
             }
         }
+
     }
 
-    class ImageViewHolder : BaseViewHolder<ItemImageBinding>, Binder<PostEntity> {
+    class ImageViewHolder :  BaseBindingViewHolder<ItemImageBinding, PostEntity> {
 
         constructor(parent : ViewGroup) : super(LayoutInflater.from(parent.context).inflate(R.layout.item_image, parent, false))
 
-        override fun bind(data: PostEntity) {
-            with(getBinding()) {
-                image.loadImage(data?.thumbnailUrl)
-                title.text = data?.title
+
+        override fun binding(item: PostEntity) {
+            with(binding) {
+                image.loadImage(item?.thumbnailUrl)
+                title.text = item?.title
             }
         }
     }
-
 
 }

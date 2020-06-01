@@ -7,8 +7,11 @@ import pe.warrenth.cleanmvvm.data.datasource.PostDataStoreFactory
 import pe.warrenth.cleanmvvm.data.datasource.local.PostLocalDataSource
 import pe.warrenth.cleanmvvm.data.datasource.remote.PostRemoteDataSource
 import pe.warrenth.cleanmvvm.data.mapper.PostEntityMapper
+import pe.warrenth.cleanmvvm.data.repository.LeftMenuRepository
 import pe.warrenth.cleanmvvm.data.repository.PostRepository
+import pe.warrenth.cleanmvvm.domain.repository.ILeftMenuRepository
 import pe.warrenth.cleanmvvm.domain.repository.IPostRepository
+import pe.warrenth.cleanmvvm.domain.usecase.GetLeftMenu
 import pe.warrenth.cleanmvvm.domain.usecase.GetPostUseCase
 
 val domainModule = module {
@@ -16,10 +19,13 @@ val domainModule = module {
         PostDataStoreFactory(get(named("local")), get(named("remote")))
     }
 
-
+    //sample
     factory<IPostRepository> { PostRepository(get()) }
     factory { GetPostUseCase(get()) }
 
+    //leftmenu
+    factory<ILeftMenuRepository> { LeftMenuRepository(get()) }
+    factory { GetLeftMenu(get()) }
 }
 
 val dataModule = module {
