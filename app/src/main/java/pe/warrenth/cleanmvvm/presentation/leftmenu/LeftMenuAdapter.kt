@@ -25,8 +25,8 @@ class LeftMenuAdapter : BaseRecyclerAdapter<BaseItem>() {
         val holder : RecyclerView.ViewHolder
 
         when(viewType) {
-            TEXT_TYPE -> holder = TextViewHolder(ItemTextBinding.inflate(LayoutInflater.from(parent.context), parent, false))
-            IMAGE_TYPE -> holder = ImageViewHolder(ItemImageBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+            TEXT_TYPE -> holder = TextViewHolder2(ItemTextBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+            IMAGE_TYPE -> holder = ImageViewHolder2(ItemImageBinding.inflate(LayoutInflater.from(parent.context), parent, false))
             else -> throw IllegalArgumentException("Invalid view type")
         }.exhaustive
 
@@ -87,25 +87,25 @@ class LeftMenuAdapter : BaseRecyclerAdapter<BaseItem>() {
     }
 
 
-//    inner class TextViewHolder(private val binding: ItemTextBinding) : BaseViewHolder2(binding.root), Binder<PostEntity> {
-//
-//        override fun bind(data: PostEntity) {
-//            with(binding) {
-//                title.text = data?.title
-//            }
-//        }
-//
-//    }
-//
-//    inner class ImageViewHolder(private val binding: ItemImageBinding) : BaseViewHolder2(binding.root), Binder<PostEntity> {
-//
-//        override fun bind(data: PostEntity) {
-//            with(binding) {
-//                image.loadImage(data?.thumbnailUrl)
-//                title.text = data?.title
-//            }
-//        }
-//
-//    }
+    inner class TextViewHolder2(private val binding: ItemTextBinding) : BaseViewHolder2(binding.root), Binder<PostEntity> {
+
+        override fun bind(data: PostEntity) {
+            with(binding) {
+                title.text = data?.title
+            }
+        }
+
+    }
+
+    inner class ImageViewHolder2(private val binding: ItemImageBinding) : BaseViewHolder2(binding.root), Binder<PostEntity> {
+
+        override fun bind(data: PostEntity) {
+            with(binding) {
+                image.loadImage(data?.thumbnailUrl)
+                title.text = data?.title
+            }
+        }
+
+    }
 
 }
