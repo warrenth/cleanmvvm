@@ -2,14 +2,13 @@ package pe.warrenth.cleanmvvm.presentation.leftmenu
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
-import pe.warrenth.cleanmvvm.R
 import pe.warrenth.cleanmvvm.core.extention.exhaustive
 import pe.warrenth.cleanmvvm.core.extention.loadImage
 import pe.warrenth.cleanmvvm.core.presentation.ui.BaseItem
 import pe.warrenth.cleanmvvm.core.presentation.ui.BaseRecyclerAdapter
 import pe.warrenth.cleanmvvm.core.presentation.ui2.BaseBindingViewHolder
+import pe.warrenth.cleanmvvm.core.presentation.ui2.BaseViewHolder2
 import pe.warrenth.cleanmvvm.databinding.ItemImageBinding
 import pe.warrenth.cleanmvvm.databinding.ItemTextBinding
 import pe.warrenth.cleanmvvm.domain.entity.PostEntity
@@ -26,8 +25,8 @@ class LeftMenuAdapter : BaseRecyclerAdapter<BaseItem>() {
         val holder : RecyclerView.ViewHolder
 
         when(viewType) {
-            TEXT_TYPE -> holder = TextViewHolder(parent)
-            IMAGE_TYPE -> holder = ImageViewHolder(parent)
+            TEXT_TYPE -> holder = TextViewHolder(ItemTextBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+            IMAGE_TYPE -> holder = ImageViewHolder(ItemImageBinding.inflate(LayoutInflater.from(parent.context), parent, false))
             else -> throw IllegalArgumentException("Invalid view type")
         }.exhaustive
 
@@ -35,13 +34,16 @@ class LeftMenuAdapter : BaseRecyclerAdapter<BaseItem>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+
+        val viewHolder : BaseBindingViewHolder<Any> = holder as BaseBindingViewHolder<Any>
+
         //TODO binding 수정 필요.
         when(getItemViewType(position)) {
             TEXT_TYPE -> {
-                //(holder as BaseBindingViewHolder<PostEntity>).bind(mItems[position].objects as PostEntity)
+                viewHolder.binding(mItems[position].objects)
             }
             IMAGE_TYPE -> {
-                //(holder as Binder<PostEntity>).bind(mItems[position].objects as PostEntity)
+                viewHolder.binding(mItems[position].objects)
             }
             else -> throw IllegalArgumentException("Invalid view type")
         }.exhaustive
@@ -64,9 +66,7 @@ class LeftMenuAdapter : BaseRecyclerAdapter<BaseItem>() {
         super.setItems(items)
     }
 
-    class TextViewHolder : BaseBindingViewHolder<ItemTextBinding, PostEntity> {
-
-        constructor(parent : ViewGroup) : super(LayoutInflater.from(parent.context).inflate(R.layout.item_text, parent, false))
+    inner class TextViewHolder(private val binding: ItemTextBinding) : BaseBindingViewHolder<PostEntity>(binding.root) {
 
         override fun binding(item: PostEntity) {
             with(binding) {
@@ -76,10 +76,7 @@ class LeftMenuAdapter : BaseRecyclerAdapter<BaseItem>() {
 
     }
 
-    class ImageViewHolder :  BaseBindingViewHolder<ItemImageBinding, PostEntity> {
-
-        constructor(parent : ViewGroup) : super(LayoutInflater.from(parent.context).inflate(R.layout.item_image, parent, false))
-
+    class ImageViewHolder(private val binding: ItemImageBinding) :  BaseBindingViewHolder<PostEntity>(binding.root) {
 
         override fun binding(item: PostEntity) {
             with(binding) {
@@ -88,5 +85,27 @@ class LeftMenuAdapter : BaseRecyclerAdapter<BaseItem>() {
             }
         }
     }
+
+
+//    inner class TextViewHolder(private val binding: ItemTextBinding) : BaseViewHolder2(binding.root), Binder<PostEntity> {
+//
+//        override fun bind(data: PostEntity) {
+//            with(binding) {
+//                title.text = data?.title
+//            }
+//        }
+//
+//    }
+//
+//    inner class ImageViewHolder(private val binding: ItemImageBinding) : BaseViewHolder2(binding.root), Binder<PostEntity> {
+//
+//        override fun bind(data: PostEntity) {
+//            with(binding) {
+//                image.loadImage(data?.thumbnailUrl)
+//                title.text = data?.title
+//            }
+//        }
+//
+//    }
 
 }
