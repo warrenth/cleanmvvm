@@ -105,7 +105,11 @@ class LeftMenuAdapter : BaseRecyclerAdapter<BaseItem>() {
                 title.text = data?.title
             }
         }
-
     }
+    //TODO
+//    inline fun <reified T : ViewDataBinding> bindings(view: View): Lazy<T> =
+//        lazy {
+//            requireNotNull(DataBindingUtil.bind<T>(view)) { "cannot find the matched view to layout." }
+//        }
 
 }
