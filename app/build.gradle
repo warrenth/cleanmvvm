@@ -41,7 +41,7 @@ dependencies {
 
     //component
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
-    implementation 'com.android.databinding:compiler:3.5.0'
+    kapt 'com.android.databinding:compiler:3.5.0'
 
     //rx
     implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
@@ -59,7 +59,6 @@ dependencies {
     implementation 'org.koin:koin-androidx-viewmodel:2.0.1'
     implementation 'javax.inject:javax.inject:1'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
-
 
     // Logging
     implementation 'com.jakewharton.timber:timber:4.7.1'
