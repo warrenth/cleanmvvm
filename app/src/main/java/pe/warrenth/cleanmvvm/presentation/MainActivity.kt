@@ -6,9 +6,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import pe.warrenth.cleanmvvm.R
 import pe.warrenth.cleanmvvm.core.presentation.ui.BaseActivity
 import pe.warrenth.cleanmvvm.databinding.ActivityMainBinding
-import pe.warrenth.cleanmvvm.presentation.leftmenu.LeftMenuFragment
-import pe.warrenth.cleanmvvm.presentation.main.MainFragment
-import pe.warrenth.cleanmvvm.presentation.main.MainViewModel
+import pe.warrenth.cleanmvvm.presentation.rx.leftmenu.LeftMenuFragment
+import pe.warrenth.cleanmvvm.presentation.leftmenu1.LeftMenuLiveDataFragment
+import pe.warrenth.cleanmvvm.presentation.rx.main.MainFragment
+import pe.warrenth.cleanmvvm.presentation.rx.main.MainViewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
@@ -41,7 +42,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         goLeftMenu()
     }
 
-    private fun goLeftMenu() {
+    fun onLeftMenu2ButtonClicked(view : View) {
+        goLeftMenu2()
+    }
+
+    private fun goLeftMenu2() {
         supportFragmentManager.beginTransaction().setCustomAnimations(
             R.anim.fragment_enter,
             R.anim.fragment_exit,
@@ -51,6 +56,19 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             .add(
                 R.id.layout_root,
                 LeftMenuFragment()
+            ).addToBackStack(null).commit();
+    }
+
+    private fun goLeftMenu() {
+        supportFragmentManager.beginTransaction().setCustomAnimations(
+            R.anim.fragment_enter,
+            R.anim.fragment_exit,
+            R.anim.fragment_pop_enter,
+            R.anim.fragment_pop_exit
+        )
+            .add(
+                R.id.layout_root,
+                LeftMenuLiveDataFragment()
             ).addToBackStack(null).commit();
     }
 

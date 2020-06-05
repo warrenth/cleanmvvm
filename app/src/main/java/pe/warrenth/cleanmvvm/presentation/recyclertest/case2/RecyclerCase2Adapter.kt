@@ -1,20 +1,29 @@
-package pe.warrenth.cleanmvvm.presentation.main
+package pe.warrenth.cleanmvvm.presentation.recyclertest.case2
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import pe.warrenth.cleanmvvm.R
 import pe.warrenth.cleanmvvm.core.extention.exhaustive
 import pe.warrenth.cleanmvvm.core.extention.loadImage
 import pe.warrenth.cleanmvvm.core.presentation.ui.BaseItem
 import pe.warrenth.cleanmvvm.core.presentation.ui.BaseRecyclerAdapter
-import pe.warrenth.cleanmvvm.core.presentation.ui.BaseViewHolder
+import pe.warrenth.cleanmvvm.core.presentation.ui2.BaseBindingViewHolder
+import pe.warrenth.cleanmvvm.databinding.BrItemTextBinding
 import pe.warrenth.cleanmvvm.databinding.ItemImageBinding
-import pe.warrenth.cleanmvvm.databinding.ItemTextBinding
 import pe.warrenth.cleanmvvm.domain.entity.PostEntity
 import java.lang.IllegalArgumentException
 
-class MainAdapter : BaseRecyclerAdapter<BaseItem>() {
+
+/**
+ * binding lazy 를 쓰는 방식
+ *
+ * 1.
+ *
+ */
+class RecyclerCase2Adapter : BaseRecyclerAdapter<BaseItem>() {
 
     companion object {
         const val TEXT_TYPE = 0  //const set, getter 없음.
@@ -25,8 +34,8 @@ class MainAdapter : BaseRecyclerAdapter<BaseItem>() {
         val holder : RecyclerView.ViewHolder
 
         when(viewType) {
-            TEXT_TYPE -> holder = TextViewHolder(parent)
-            IMAGE_TYPE -> holder = ImageViewHolder(parent)
+            TEXT_TYPE -> holder = TextBindingViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_text, parent, false))
+            IMAGE_TYPE -> holder = ImageBindingViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_image, parent, false))
             else -> throw IllegalArgumentException("Invalid view type")
         }.exhaustive
 
@@ -34,14 +43,16 @@ class MainAdapter : BaseRecyclerAdapter<BaseItem>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val viewHolder:Binder<Any> = (holder as Binder<Any>)
 
+        val viewHolder : BaseBindingViewHolder<Any> = holder as BaseBindingViewHolder<Any>
+
+        //TODO binding 수정 필요.
         when(getItemViewType(position)) {
             TEXT_TYPE -> {
-                viewHolder.run { bind(mItems[position].objects as PostEntity) }
+                viewHolder.binding(mItems[position].objects)
             }
             IMAGE_TYPE -> {
-                viewHolder.run { bind(mItems[position].objects as PostEntity) }
+                viewHolder.binding(mItems[position].objects)
             }
             else -> throw IllegalArgumentException("Invalid view type")
         }.exhaustive
@@ -64,28 +75,31 @@ class MainAdapter : BaseRecyclerAdapter<BaseItem>() {
         super.setItems(items)
     }
 
-    class TextViewHolder : BaseViewHolder<ItemTextBinding>, Binder<PostEntity> {
 
-        constructor(parent : ViewGroup) : super(LayoutInflater.from(parent.context).inflate(R.layout.item_text, parent, false))
+    inner class TextBindingViewHolder(private val view: View) : BaseViewBindingHolder<BrItemTextBinding>(view), Binder<PostEntity> {
 
         override fun bind(data: PostEntity) {
-            with(getBinding()) {
+            with(binding) {
                 title.text = data?.title
             }
         }
+        fun onClick(item : PostEntity) {
+            Toast.makeText(binding.root.context, "item="+item.title, Toast.LENGTH_SHORT).show()
+        }
     }
 
-    class ImageViewHolder : BaseViewHolder<ItemImageBinding>, Binder<PostEntity> {
-
-        constructor(parent : ViewGroup) : super(LayoutInflater.from(parent.context).inflate(R.layout.item_image, parent, false))
+    inner class ImageBindingViewHolder(private val view: View) : BaseViewBindingHolder<ItemImageBinding>(view), Binder<PostEntity> {
 
         override fun bind(data: PostEntity) {
-            with(getBinding()) {
+            with(binding) {
                 image.loadImage(data?.thumbnailUrl)
                 title.text = data?.title
             }
         }
-    }
+        fun onClick(item : PostEntity) {
+            Toast.makeText(binding.root.context, "item="+item.title, Toast.LENGTH_SHORT).show()
+        }
 
+    }
 
 }

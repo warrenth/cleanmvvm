@@ -1,4 +1,4 @@
-package pe.warrenth.cleanmvvm.presentation.recycler.case2
+package pe.warrenth.cleanmvvm.presentation.recyclertest.case2
 
 import android.view.View
 import androidx.databinding.DataBindingUtil

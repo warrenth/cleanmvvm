@@ -5,7 +5,7 @@
     <data>
         <variable name="item" type="pe.warrenth.cleanmvvm.domain.entity.PostEntity"/>
         <variable name="holder"
-            type="pe.warrenth.cleanmvvm.presentation.recycler.case2.RecyclerCase2Adapter.TextBindingViewHolder"/>
+            type="pe.warrenth.cleanmvvm.presentation.recyclertest.case2.RecyclerCase2Adapter.TextBindingViewHolder"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

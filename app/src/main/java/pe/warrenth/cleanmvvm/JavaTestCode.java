@@ -10,10 +10,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
 
-import pe.warrenth.cleanmvvm.R;
-import pe.warrenth.cleanmvvm.core.presentation.ui.BaseViewHolder;
-import pe.warrenth.cleanmvvm.generated.callback.OnClickListener;
-import pe.warrenth.cleanmvvm.presentation.main.MainFragment;
+import pe.warrenth.cleanmvvm.presentation.rx.main.MainFragment;
 
 public class JavaTestCode extends AppCompatActivity {
 

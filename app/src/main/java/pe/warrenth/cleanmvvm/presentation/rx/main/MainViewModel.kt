@@ -1,16 +1,12 @@
-package pe.warrenth.cleanmvvm.presentation.main
+package pe.warrenth.cleanmvvm.presentation.rx.main
 
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import pe.warrenth.cleanmvvm.core.extention.error
-import pe.warrenth.cleanmvvm.core.extention.loading
-import pe.warrenth.cleanmvvm.core.extention.success
 import pe.warrenth.cleanmvvm.core.presentation.ui.BaseItem
 import pe.warrenth.cleanmvvm.core.presentation.ui.BaseViewModel
 import pe.warrenth.cleanmvvm.data.model.ResultData
 import pe.warrenth.cleanmvvm.data.model.Status
-import pe.warrenth.cleanmvvm.domain.entity.PostEntity
 import pe.warrenth.cleanmvvm.domain.usecase.GetPostUseCase
 import timber.log.Timber
 

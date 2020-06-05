@@ -1,6 +1,5 @@
-package pe.warrenth.cleanmvvm.presentation.splash
+package pe.warrenth.cleanmvvm.presentation.rx.splash
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.Observable
 import pe.warrenth.cleanmvvm.core.presentation.ui.BaseViewModel

@@ -1,15 +1,14 @@
-package pe.warrenth.cleanmvvm.presentation.leftmenu
+package pe.warrenth.cleanmvvm.presentation.rx.leftmenu
 
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import pe.warrenth.cleanmvvm.core.presentation.ui.BaseItem
-import pe.warrenth.cleanmvvm.core.presentation.ui.BaseViewHolder
 import pe.warrenth.cleanmvvm.core.presentation.ui.BaseViewModel
 import pe.warrenth.cleanmvvm.data.model.ResultData
 import pe.warrenth.cleanmvvm.data.model.Status
 import pe.warrenth.cleanmvvm.domain.usecase.GetLeftMenu
-import pe.warrenth.cleanmvvm.presentation.main.MainAdapter
+import pe.warrenth.cleanmvvm.presentation.rx.main.MainAdapter
 import timber.log.Timber
 
 class LeftMenuViewModel(private val getLeftMenu: GetLeftMenu) : BaseViewModel() {

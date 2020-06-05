@@ -1,4 +1,4 @@
-package pe.warrenth.cleanmvvm.presentation.splash
+package pe.warrenth.cleanmvvm.presentation.rx.splash
 
 import android.content.Intent
 import android.os.Bundle

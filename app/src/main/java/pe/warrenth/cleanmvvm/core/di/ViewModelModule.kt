@@ -1,14 +1,10 @@
 package pe.warrenth.cleanmvvm.core.di
 
-import android.app.Application
-import org.koin.android.ext.koin.androidApplication
-import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import pe.warrenth.cleanmvvm.CleanApplication
-import pe.warrenth.cleanmvvm.presentation.leftmenu.LeftMenuViewModel
-import pe.warrenth.cleanmvvm.presentation.main.MainViewModel
-import pe.warrenth.cleanmvvm.presentation.splash.SplashViewModel
+import pe.warrenth.cleanmvvm.presentation.leftmenu1.LeftMenuLiveDataViewModel
+import pe.warrenth.cleanmvvm.presentation.rx.main.MainViewModel
+import pe.warrenth.cleanmvvm.presentation.rx.splash.SplashViewModel
 
 val viewModelModules = module {
     /**
@@ -19,7 +15,7 @@ val viewModelModules = module {
      * by ViewModel() get instance of ViewModel
      *
      */
-    viewModel { LeftMenuViewModel(get())}
+    viewModel { LeftMenuLiveDataViewModel(get())}
     viewModel { MainViewModel(get())}
     viewModel { SplashViewModel() }
 }

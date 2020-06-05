@@ -1,4 +1,4 @@
-package pe.warrenth.cleanmvvm.presentation.main
+package pe.warrenth.cleanmvvm.presentation.leftmenu1
 
 import android.os.Bundle
 import androidx.lifecycle.Observer
@@ -11,34 +11,39 @@ import pe.warrenth.cleanmvvm.core.presentation.ui.BaseFragment
 import pe.warrenth.cleanmvvm.core.presentation.ui.BaseItem
 import pe.warrenth.cleanmvvm.data.model.ResultData
 import pe.warrenth.cleanmvvm.data.model.Status
-import pe.warrenth.cleanmvvm.databinding.FragmentMainBinding
-import pe.warrenth.cleanmvvm.domain.entity.PostEntity
+import pe.warrenth.cleanmvvm.databinding.FragmentLeftmenuBinding
 import timber.log.Timber
 
-class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>() {
+/**
+ * None RxJava. use LiveData
+ */
+class LeftMenuLiveDataFragment : BaseFragment<FragmentLeftmenuBinding, LeftMenuLiveDataViewModel>() {
 
-    private val mainViewModel : MainViewModel by viewModel()
+    private val leftMenuLiveDataViewModel : LeftMenuLiveDataViewModel by viewModel()
 
-    private lateinit var mainAdapter: MainAdapter
-    override fun getLayoutId(): Int = R.layout.fragment_main
-    override fun getViewModel(): MainViewModel = mainViewModel
+    private lateinit var leftMenuLiveDataAdapter2: LeftMenuLiveDataAdapter
 
-    //ktx fragmentmanager 사용.
+    override fun getLayoutId(): Int {
+        return R.layout.fragment_leftmenu
+    }
+
+    override fun getViewModel(): LeftMenuLiveDataViewModel {
+       return leftMenuLiveDataViewModel
+    }
+
     override fun setUI(savedInstanceState: Bundle?) {
-        mainAdapter = MainAdapter()
+        leftMenuLiveDataAdapter2 = LeftMenuLiveDataAdapter()
         getBinding().recyclerview.layoutManager = LinearLayoutManager(activity)
-        getBinding().recyclerview.adapter = mainAdapter
+        getBinding().recyclerview.adapter = leftMenuLiveDataAdapter2
         getBinding().recyclerview.setHasFixedSize(true)
-        getBinding().viewModel = mainViewModel;
+        getBinding().viewModel = leftMenuLiveDataViewModel;
     }
 
     override fun setViewModel() {
-        mainViewModel.getTest().observe(this, Observer<ResultData<List<BaseItem>>> {
+        leftMenuLiveDataViewModel.getData().observe(this, Observer<ResultData<List<BaseItem>>> {
             handleResponse(it)
         })
-
     }
-
 
     private fun handleResponse(resultData: ResultData<List<BaseItem>>) {
         when(resultData.status) {
@@ -51,7 +56,7 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>() {
                 Timber.e("Fetched data")
                 getBinding().loading.gone()
                 //TODO 수정필요
-                resultData.data?.let { mainAdapter.setItems(it) }
+                resultData.data?.let { leftMenuLiveDataAdapter2.setItems(it) }
             }
 
             Status.ERROR -> {
@@ -61,4 +66,5 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>() {
             }
         }
     }
+
 }
