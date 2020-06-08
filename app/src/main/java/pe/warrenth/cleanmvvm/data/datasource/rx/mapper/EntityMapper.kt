@@ -1,4 +1,4 @@
-package pe.warrenth.cleanmvvm.data.mapper
+package pe.warrenth.cleanmvvm.data.datasource.rx.mapper
 
 /**
  * Created by Qifan on 2019-07-14.

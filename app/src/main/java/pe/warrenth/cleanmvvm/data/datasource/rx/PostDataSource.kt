@@ -1,4 +1,4 @@
-package pe.warrenth.cleanmvvm.data.datasource
+package pe.warrenth.cleanmvvm.data.datasource.rx
 
 import io.reactivex.Flowable
 import io.reactivex.Single

@@ -7,7 +7,7 @@ import pe.warrenth.cleanmvvm.R
 import pe.warrenth.cleanmvvm.core.presentation.ui.BaseActivity
 import pe.warrenth.cleanmvvm.databinding.ActivityMainBinding
 import pe.warrenth.cleanmvvm.presentation.rx.leftmenu.LeftMenuFragment
-import pe.warrenth.cleanmvvm.presentation.leftmenu1.LeftMenuLiveDataFragment
+import pe.warrenth.cleanmvvm.presentation.leftmenu1.Menu2LiveDataFragment
 import pe.warrenth.cleanmvvm.presentation.rx.main.MainFragment
 import pe.warrenth.cleanmvvm.presentation.rx.main.MainViewModel
 
@@ -68,7 +68,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         )
             .add(
                 R.id.layout_root,
-                LeftMenuLiveDataFragment()
+                Menu2LiveDataFragment()
             ).addToBackStack(null).commit();
     }
 

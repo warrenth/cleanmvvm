@@ -1,4 +1,6 @@
-package pe.warrenth.cleanmvvm.data.datasource
+package pe.warrenth.cleanmvvm.data.datasource.rx
+
+import pe.warrenth.cleanmvvm.data.datasource.rx.PostDataSource
 
 class PostDataStoreFactory(
     private val localDataStore: PostDataSource,

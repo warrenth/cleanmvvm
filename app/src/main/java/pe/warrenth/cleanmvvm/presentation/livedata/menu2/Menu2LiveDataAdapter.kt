@@ -14,7 +14,7 @@ import pe.warrenth.cleanmvvm.databinding.ItemTextBinding
 import pe.warrenth.cleanmvvm.domain.entity.PostEntity
 import java.lang.IllegalArgumentException
 
-class LeftMenuLiveDataAdapter : BaseRecyclerAdapter<BaseItem>() {
+class Menu2LiveDataAdapter : BaseRecyclerAdapter<BaseItem>() {
 
     companion object {
         const val TEXT_TYPE = 0  //const set, getter 없음.

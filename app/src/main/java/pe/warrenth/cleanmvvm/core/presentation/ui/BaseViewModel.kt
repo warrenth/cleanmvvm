@@ -1,12 +1,13 @@
 package pe.warrenth.cleanmvvm.core.presentation.ui
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
 abstract class BaseViewModel : ViewModel() {
+
+    private val mDataLoading = MutableLiveData<Boolean>()
 
     private val compositeDisposable = CompositeDisposable()
 

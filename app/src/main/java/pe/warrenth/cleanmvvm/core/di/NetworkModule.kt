@@ -7,7 +7,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 import pe.warrenth.cleanmvvm.BuildConfig
-import pe.warrenth.cleanmvvm.data.datasource.remote.ApiPostService
+import pe.warrenth.cleanmvvm.data.datasource.rx.remote.ApiPostService
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory

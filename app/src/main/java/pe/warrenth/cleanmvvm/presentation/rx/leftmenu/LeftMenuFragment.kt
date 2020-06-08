@@ -12,30 +12,30 @@ import pe.warrenth.cleanmvvm.core.presentation.ui.BaseItem
 import pe.warrenth.cleanmvvm.data.model.ResultData
 import pe.warrenth.cleanmvvm.data.model.Status
 import pe.warrenth.cleanmvvm.databinding.FragmentLeftmenuBinding
-import pe.warrenth.cleanmvvm.presentation.leftmenu1.LeftMenuLiveDataAdapter
-import pe.warrenth.cleanmvvm.presentation.leftmenu1.LeftMenuLiveDataViewModel
+import pe.warrenth.cleanmvvm.presentation.leftmenu1.Menu2LiveDataAdapter
+import pe.warrenth.cleanmvvm.presentation.leftmenu1.Menu2LiveDataViewModel
 import timber.log.Timber
 
 /**
  * RxJava
  */
-class LeftMenuFragment : BaseFragment<FragmentLeftmenuBinding, LeftMenuLiveDataViewModel>() {
+class LeftMenuFragment : BaseFragment<FragmentLeftmenuBinding, Menu2LiveDataViewModel>() {
 
-    private val leftMenuViewModel : LeftMenuLiveDataViewModel by viewModel()
+    private val leftMenuViewModel : Menu2LiveDataViewModel by viewModel()
 
-    private lateinit var leftMenuAdapter: LeftMenuLiveDataAdapter
+    private lateinit var leftMenuAdapter: Menu2LiveDataAdapter
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_leftmenu
     }
 
-    override fun getViewModel(): LeftMenuLiveDataViewModel {
+    override fun getViewModel(): Menu2LiveDataViewModel {
        return leftMenuViewModel
     }
 
     override fun setUI(savedInstanceState: Bundle?) {
         leftMenuAdapter =
-            LeftMenuLiveDataAdapter()
+            Menu2LiveDataAdapter()
         getBinding().recyclerview.layoutManager = LinearLayoutManager(activity)
         getBinding().recyclerview.adapter = leftMenuAdapter
         getBinding().recyclerview.setHasFixedSize(true)

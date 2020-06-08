@@ -8,5 +8,4 @@ import pe.warrenth.cleanmvvm.domain.entity.PostEntity
 interface ILeftMenuRepository {
 
     fun getData(): Flowable<List<PostEntity>>
-
 }

@@ -1,15 +1,12 @@
-package pe.warrenth.cleanmvvm.data.datasource.local
-
+package pe.warrenth.cleanmvvm.data.datasource.rx.remote
 
 import io.reactivex.Flowable
-import pe.warrenth.cleanmvvm.data.datasource.PostDataSource
-import pe.warrenth.cleanmvvm.data.datasource.remote.ApiPostService
-import pe.warrenth.cleanmvvm.data.mapper.PostEntityMapper
+import pe.warrenth.cleanmvvm.data.datasource.rx.PostDataSource
+import pe.warrenth.cleanmvvm.data.datasource.rx.mapper.PostEntityMapper
 import pe.warrenth.cleanmvvm.domain.entity.PostEntity
-import pe.warrenth.cleanmvvm.domain.repository.IPostRepository
 
 
-class PostLocalDataSource (
+class PostRemoteDataSource (
     private val service: ApiPostService,
     private val mapper: PostEntityMapper
 ) : PostDataSource {

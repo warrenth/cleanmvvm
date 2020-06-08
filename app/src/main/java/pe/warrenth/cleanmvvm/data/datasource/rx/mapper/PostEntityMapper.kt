@@ -1,4 +1,4 @@
-package pe.warrenth.cleanmvvm.data.mapper
+package pe.warrenth.cleanmvvm.data.datasource.rx.mapper
 
 import pe.warrenth.cleanmvvm.data.model.PostModel
 import pe.warrenth.cleanmvvm.domain.entity.PostEntity
