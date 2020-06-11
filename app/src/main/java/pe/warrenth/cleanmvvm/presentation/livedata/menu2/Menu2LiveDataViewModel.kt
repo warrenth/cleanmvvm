@@ -33,6 +33,8 @@ class Menu2LiveDataViewModel(private val getMenu2UseCase: GetMenu2UseCase) : Bas
             }
 
         })
+
+        //todo 코루틴
     }
 
 }
