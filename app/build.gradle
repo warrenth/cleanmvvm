@@ -2,19 +2,21 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "pe.warrenth.sample"
-        minSdkVersion 16
-        targetSdkVersion 29
+        compileSdkVersion "$ver.compileSdkVersion"
+        minSdkVersion "$ver.minSdkVersion"
+        targetSdkVersion "$ver.targetSdkVersion"
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
     }
+
 
     buildTypes {
         release {
@@ -23,59 +25,25 @@ android {
         }
     }
 
-    dataBinding {
-        enabled = true
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    //Android Support
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$ver.kotlin"
-    implementation "androidx.appcompat:appcompat:$ver.appCompat"
-    implementation "androidx.constraintlayout:constraintlayout:$ver.constraintLayout"
+    implementation(project(":presentation"))
+    implementation(project(":domain"))
+    implementation(project(":data"))
 
-    //Android Architecture Component
-    implementation "androidx.fragment:fragment-ktx:$ver.fragment"
-    implementation "androidx.lifecycle:lifecycle-extensions:$ver.lifecycle"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$ver.lifecycle"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$ver.lifecycle"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$ver.lifecycle"
-
-    //component
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
-    kapt 'com.android.databinding:compiler:3.5.0'
-
-    //rx
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
-
-    //net
-    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.0'
-    implementation 'com.squareup.retrofit2:converter-moshi:2.6.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.0.0'
 
     //Dagger Hilt
     implementation "com.google.dagger:hilt-android:$ver.daggerHilt"
     kapt "com.google.dagger:hilt-android-compiler:$ver.daggerHilt"
-    implementation "androidx.hilt:hilt-common:$ver.daggerHiltAndroid"
-    kapt "androidx.hilt:hilt-compiler:$ver.daggerHiltAndroid"
-
-    // Logging
-    implementation 'com.jakewharton.timber:timber:4.7.1'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-
-    // multidex
-    implementation "androidx.multidex:multidex:2.0.1"
-
-    // Room
-    implementation "android.arch.persistence.room:runtime:1.1.1"
-    implementation "android.arch.persistence.room:rxjava2:1.1.1"
-
-    //glide
-    implementation 'com.github.bumptech.glide:glide:4.9.0'
-
 }

@@ -1,6 +1,6 @@
 rootProject.name='My Application'
+
 include ':app'
-include ':buildSrc'
 include ':data'
 include ':domain'
 include ':presentation'

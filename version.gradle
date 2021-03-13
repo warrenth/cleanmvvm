@@ -1,8 +1,13 @@
 ext.ver = [
+        minSdkVersion           : '21',
+        targetSdkVersion        : '28',
+        compileSdkVersion       : '28',
 
         // android support
         appCompat               : '1.2.0',
         constraintLayout        : '2.0.4',
+        recyclerViewVersion     : '1.1.0',
+        fragmentKtxVersion      : '1.2.0',
 
         // android architecture component
         fragment                : '1.2.5',
@@ -13,8 +18,8 @@ ext.ver = [
         coroutines              : '1.4.1',
 
         // dagger hilt
-        daggerHilt              : '2.31.2-alpha',
-        daggerHiltAndroid       : '1.0.0-alpha03',
+        daggerHilt              : '2.28-alpha',
+        daggerHiltViewModel     : '1.0.0-alpha01',
 
         // network
         retrofit                : '2.9.0',

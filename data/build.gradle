@@ -1,15 +1,13 @@
-plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
-}
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
-
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 30
+        compileSdkVersion "$ver.compileSdkVersion"
+        minSdkVersion ver.minSdkVersion
+        targetSdkVersion ver.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -41,4 +39,6 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation(project(":domain"))
 }
