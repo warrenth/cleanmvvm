@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="item" type="pe.hoondroid.domain.entity.PostEntity"/>
+        <variable name="item" type="pe.warrenth.domain.entity.PostEntity"/>
         <variable name="holder"
-            type="pe.hoondroid.presentation.study.recyclerbindingtest.case2.RecyclerCase2Adapter.ImageBindingViewHolder"/>
+            type="pe.warrenth.presentation.study.recyclerbindingtest.case2.RecyclerCase2Adapter.ImageBindingViewHolder"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

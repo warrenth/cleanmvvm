@@ -6,12 +6,12 @@ apply plugin: 'dagger.hilt.android.plugin'
 
 
 android {
+    compileSdkVersion 28
 
     defaultConfig {
-        applicationId "pe.warrenth.sample"
-        compileSdkVersion "$ver.compileSdkVersion"
-        minSdkVersion "$ver.minSdkVersion"
-        targetSdkVersion "$ver.targetSdkVersion"
+        applicationId "pe.warrenth.CleanApplication"
+        minSdkVersion 21
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -19,7 +19,7 @@ android {
 
 
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

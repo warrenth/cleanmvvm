@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="pe.hoondroid.presentation.study.main.leftmenu.LeftMenuViewModel" />
+            type="pe.warrenth.presentation.study.main.leftmenu.LeftMenuViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -6,10 +6,10 @@
     <data>
         <variable
             name="activity"
-            type="pe.hoondroid.presentation.study.MainActivity" />
+            type="pe.warrenth.presentation.study.MainActivity" />
         <variable
             name="handler"
-            type="pe.hoondroid.presentation.study.MainActivity.OnMainCallback" />
+            type="pe.warrenth.presentation.study.MainActivity.OnMainCallback" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

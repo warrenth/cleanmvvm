@@ -1,14 +1,15 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 
 android {
+    compileSdkVersion 28
+
     defaultConfig {
-        compileSdkVersion "$ver.compileSdkVersion"
-        minSdkVersion ver.minSdkVersion
-        targetSdkVersion ver.targetSdkVersion
+        minSdkVersion 21
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
 
@@ -16,8 +17,8 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
 
-    dataBinding {
-        enabled = true
+    buildFeatures{
+        dataBinding = true
     }
 
     compileOptions {
@@ -28,6 +29,13 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
 }
 
 dependencies {
@@ -36,7 +44,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$ver.appCompat"
     implementation "androidx.constraintlayout:constraintlayout:$ver.constraintLayout"
     implementation "androidx.recyclerview:recyclerview:$ver.recyclerViewVersion"
-    kapt 'com.android.databinding:compiler:3.5.0'
+    kapt 'com.android.databinding:compiler:3.5.3'
 
     //kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$ver.kotlin"

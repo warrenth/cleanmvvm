@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="item" type="pe.hoondroid.domain.entity.PostEntity"/>
+        <variable name="item" type="pe.warrenth.domain.entity.PostEntity"/>
         <variable name="holder"
-            type="pe.hoondroid.presentation.study.recyclerbindingtest.case2.RecyclerCase2Adapter.TextBindingViewHolder"/>
+            type="pe.warrenth.presentation.study.recyclerbindingtest.case2.RecyclerCase2Adapter.TextBindingViewHolder"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
