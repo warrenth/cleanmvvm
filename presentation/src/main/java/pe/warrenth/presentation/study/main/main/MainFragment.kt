@@ -32,7 +32,7 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>() {
     }
 
     override fun subscribeUi() {
-        TODO("Not yet implemented")
+
     }
 
     private fun handleResponse(resultData: ResultData<List<BaseItem>>) {

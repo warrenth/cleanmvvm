@@ -1,9 +1,10 @@
 package pe.warrenth
 
-import android.app.Application
+import androidx.multidex.MultiDexApplication
 import dagger.hilt.android.HiltAndroidApp
 
-class CleanApplication : Application() {
+@HiltAndroidApp
+class CleanApplication : MultiDexApplication() {
 
     companion object {
         lateinit var context : CleanApplication

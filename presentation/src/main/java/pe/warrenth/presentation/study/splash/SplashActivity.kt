@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.components.ActivityComponent
 import pe.warrenth.presentation.R
 import pe.warrenth.presentation.base.ui.BaseActivity
 import pe.warrenth.presentation.databinding.ActivitySplashBinding

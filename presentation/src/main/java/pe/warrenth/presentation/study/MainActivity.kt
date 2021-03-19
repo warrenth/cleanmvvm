@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.components.ActivityComponent
 import pe.warrenth.presentation.R
 import pe.warrenth.presentation.base.ui.BaseActivity
 import pe.warrenth.presentation.databinding.ActivityMainBinding
@@ -11,7 +12,6 @@ import pe.warrenth.presentation.study.main.leftmenu.LeftMenuFragment
 import pe.warrenth.presentation.study.main.main.MainFragment
 import pe.warrenth.presentation.study.main.main.MainViewModel
 
-@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     private val mainViewModel : MainViewModel by viewModels()
