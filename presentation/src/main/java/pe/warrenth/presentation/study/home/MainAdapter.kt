@@ -1,4 +1,4 @@
-package pe.warrenth.presentation.study.main.main
+package pe.warrenth.presentation.study.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

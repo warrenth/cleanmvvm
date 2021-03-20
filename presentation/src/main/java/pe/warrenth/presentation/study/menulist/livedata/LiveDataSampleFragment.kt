@@ -1,4 +1,4 @@
-package pe.warrenth.presentation.study.main.leftmenu
+package pe.warrenth.presentation.study.menulist.livedata
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
@@ -10,24 +10,24 @@ import pe.warrenth.presentation.databinding.FragmentLeftmenuBinding
 /**
  * RxJava
  */
-class LeftMenuFragment : BaseFragment<FragmentLeftmenuBinding, LeftMenuViewModel>() {
+class LiveDataSampleFragment : BaseFragment<FragmentLeftmenuBinding, FlowSampleViewModel>() {
 
-    private val leftMenuViewModel : LeftMenuViewModel by viewModels()
+    private val liveDataSampleViewModel : FlowSampleViewModel by viewModels()
 
-    private lateinit var leftMenuAdapter: LeftMenuAdapter
+    private lateinit var flowSampleAdapter: FlowSampleAdapter
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_leftmenu
     }
 
-    override fun getViewModel(): LeftMenuViewModel {
-       return leftMenuViewModel
+    override fun getViewModel(): FlowSampleViewModel {
+       return liveDataSampleViewModel
     }
 
     override fun setupUi(savedInstanceState: Bundle?) {
-        leftMenuAdapter = LeftMenuAdapter()
+        flowSampleAdapter = FlowSampleAdapter()
         getBinding().recyclerview.layoutManager = LinearLayoutManager(activity)
-        getBinding().recyclerview.adapter = leftMenuAdapter
+        getBinding().recyclerview.adapter = flowSampleAdapter
         getBinding().recyclerview.setHasFixedSize(true)
     }
 

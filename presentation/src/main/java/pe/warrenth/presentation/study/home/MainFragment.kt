@@ -1,8 +1,7 @@
-package pe.warrenth.presentation.study.main.main
+package pe.warrenth.presentation.study.home
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import pe.warrenth.presentation.R
 import pe.warrenth.presentation.base.binding.ResultData

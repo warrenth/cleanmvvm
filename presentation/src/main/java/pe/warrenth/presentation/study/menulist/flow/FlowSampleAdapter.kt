@@ -1,4 +1,4 @@
-package pe.warrenth.presentation.study.main.leftmenu
+package pe.warrenth.presentation.study.menulist.livedata
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -13,7 +13,7 @@ import pe.warrenth.presentation.databinding.ItemImageBinding
 import pe.warrenth.presentation.databinding.ItemTextBinding
 import java.lang.IllegalArgumentException
 
-class LeftMenuAdapter : BaseRecyclerAdapter<BaseItem>() {
+class FlowSampleAdapter : BaseRecyclerAdapter<BaseItem>() {
 
     companion object {
         const val TEXT_TYPE = 0

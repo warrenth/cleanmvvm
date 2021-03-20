@@ -3,14 +3,12 @@ package pe.warrenth.presentation.study
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.components.ActivityComponent
 import pe.warrenth.presentation.R
 import pe.warrenth.presentation.base.ui.BaseActivity
 import pe.warrenth.presentation.databinding.ActivityMainBinding
-import pe.warrenth.presentation.study.main.leftmenu.LeftMenuFragment
-import pe.warrenth.presentation.study.main.main.MainFragment
-import pe.warrenth.presentation.study.main.main.MainViewModel
+import pe.warrenth.presentation.study.menulist.livedata.FlowSampleFragment
+import pe.warrenth.presentation.study.home.MainFragment
+import pe.warrenth.presentation.study.home.MainViewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
@@ -24,7 +22,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override fun getViewModel(): MainViewModel = mainViewModel
 
     override fun setUI(savedInstanceState: Bundle?) {
-        // Ways to connect listener to databinding
+        // two Ways to connect listener to databinding
         getViewDataBinding().activity = this
         getViewDataBinding().handler = mainCallback
 
@@ -52,7 +50,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             R.anim.fragment_exit,
             R.anim.fragment_pop_enter,
             R.anim.fragment_pop_exit)
-            .add(R.id.layout_root, LeftMenuFragment())
+            .add(R.id.layout_root, FlowSampleFragment())
             .addToBackStack(null).commit()
     }
 
@@ -62,7 +60,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             R.anim.fragment_exit,
             R.anim.fragment_pop_enter,
             R.anim.fragment_pop_exit)
-            .add(R.id.layout_root, LeftMenuFragment())
+            .add(R.id.layout_root, FlowSampleFragment())
             .addToBackStack(null).commit()
     }
 
