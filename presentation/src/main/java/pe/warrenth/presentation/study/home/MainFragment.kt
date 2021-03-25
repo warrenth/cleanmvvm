@@ -3,6 +3,7 @@ package pe.warrenth.presentation.study.home
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import pe.warrenth.presentation.R
 import pe.warrenth.presentation.base.binding.ResultData
 import pe.warrenth.presentation.base.binding.Status
@@ -13,6 +14,7 @@ import pe.warrenth.presentation.base.ui.BaseItem
 import pe.warrenth.presentation.databinding.FragmentMainBinding
 import timber.log.Timber
 
+@AndroidEntryPoint
 class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>() {
 
     private val mainViewModel : MainViewModel by viewModels ()

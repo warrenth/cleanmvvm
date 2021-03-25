@@ -3,6 +3,7 @@ package pe.warrenth.presentation.study
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import pe.warrenth.presentation.R
 import pe.warrenth.presentation.base.ui.BaseActivity
 import pe.warrenth.presentation.databinding.ActivityMainBinding
@@ -10,6 +11,7 @@ import pe.warrenth.presentation.study.menulist.livedata.FlowSampleFragment
 import pe.warrenth.presentation.study.home.MainFragment
 import pe.warrenth.presentation.study.home.MainViewModel
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     private val mainViewModel : MainViewModel by viewModels()

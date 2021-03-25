@@ -3,6 +3,7 @@ package pe.warrenth.presentation.study.menulist.livedata
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import pe.warrenth.presentation.R
 import pe.warrenth.presentation.base.ui.BaseFragment
 import pe.warrenth.presentation.databinding.FragmentLeftmenuBinding
@@ -10,6 +11,8 @@ import pe.warrenth.presentation.databinding.FragmentLeftmenuBinding
 /**
  * RxJava
  */
+
+@AndroidEntryPoint
 class FlowSampleFragment : BaseFragment<FragmentLeftmenuBinding, FlowSampleViewModel>() {
 
     private val flowSampleViewModel : FlowSampleViewModel by viewModels()
